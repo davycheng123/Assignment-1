@@ -58,7 +58,7 @@
     | Connection                | TCP b/w (Mbps) | RTT (ms) |
     | ------------------------- | -------------- | -------- |
     | N. Virginia - Oregon      |                |          |
-    | N. Virginia - N. Virginia |                |          |
+    | N. Virginia - N. Virginia | 4630               |  0.232        |
     | Oregon - Oregon           |                |          |
 
     > Region: `N. Virginia`/`Oregon`. Use `Ubuntu Server 20.04 LTS (HVM)` as AMI. All instances are `t3.medium`.
