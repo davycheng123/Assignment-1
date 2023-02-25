@@ -19,12 +19,13 @@
 
     > SysBench is used. 
     > 
-    > The command used for accessing CPU performance was "sysbench cpu --threads=4 --cpu-max-prime=10000 run".
-    > This command asks the CPU to calculate prime number to 10000, which is the maximum allowed. 
+    > The command used for accessing CPU performance was `sysbench cpu --threads=4 --cpu-max-prime=10000 run`.
+    > This command asks the CPU to calculate prime number to 10000, which is the maximum allowed, with 4 threads. 
     > The CPU performance is accessed by its speed to see how many events it is capable to handle per second.
     > 
-    > The command used for accesing the memory performance was "sysbench memory --threads=4 --memory-total-size=10G --memory-oper=write --memory-scope=global run"
-    > This command asks the computer to 
+    > The command used for accesing the memory performance was `sysbench memory --threads=4 --memory-total-size=10G --memory-oper=write --memory-scope=global run`.
+    > This command asks the computer to test the performance of the memory by writing 10GB of data on it with 4 threads.
+    > The memory performance is accessed its writing speed in Mib per second.
 
 2. (1 mark) Run your measurement tool on general purpose `t2.small`, `t3.medium`, and `c3.large` Linux instances, respectively, and find the performance differences among these instances. Launch all the instances in the **N. Virginia** region. Does the performance of EC2 instances increase commensurate with the increase of the number of vCPUs and memory resource?
 
@@ -37,6 +38,11 @@
     | `c3.large`  | 1434.46 event/sec |  710.19 MiB/sec    |
 
     > Region: `N. Virginia`. Use `Ubuntu Server 20.04 LTS (HVM)` as AMI.
+    > CPU performance of `t2.small` is significantly lower than the other 2, given that it has fewer vCPU than them. 
+    > However, `t3.medium`'s CPU performs better than `c3.large` despite they both have 2 vCPUs.
+    > 
+    > For the memory, `t2.small` has 2GiB, `c3.large` has 3.75GiB, and `t3.medium` has 4GiB. 
+    > Although the memory performance ranking corresponds to the growth of the memory size, it is not linear and `t3.medium` clearly has a much higher memory performance.
 
 ## Question 2: Measure the EC2 Network performance
 
@@ -57,9 +63,9 @@
 
     | Connection                | TCP b/w (Mbps) | RTT (ms) |
     | ------------------------- | -------------- | -------- |
-    | N. Virginia - Oregon      |                |          |
-    | N. Virginia - N. Virginia | 4630               |  0.232        |
-    | Oregon - Oregon           |                |          |
+    | N. Virginia - Oregon      | 24.8           |  63.331  |
+    | N. Virginia - N. Virginia | 4630           |  0.232   |
+    | Oregon - Oregon           | 4250           |  0.234   |
 
     > Region: `N. Virginia`/`Oregon`. Use `Ubuntu Server 20.04 LTS (HVM)` as AMI. All instances are `t3.medium`.
     
