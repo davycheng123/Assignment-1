@@ -38,6 +38,7 @@
     | `c3.large`  | 1434.46 event/sec |  710.19 MiB/sec    |
 
     > Region: `N. Virginia`. Use `Ubuntu Server 20.04 LTS (HVM)` as AMI.
+    > 
     > CPU performance of `t2.small` is significantly lower than the other 2, given that it has fewer vCPU than them. 
     > However, `t3.medium`'s CPU performs better than `c3.large` despite they both have 2 vCPUs.
     > 
@@ -58,6 +59,8 @@
     | `t3.medium` - `t2.small`  | 989            |  0.744   |
 
     > Region: `N. Virginia`. Use `Ubuntu Server 20.04 LTS (HVM)` as AMI. You should launch **6** instances in total.
+    > 
+    > Generally, network performance between instances of the same type is better than those of different types.
 
 2. (1 mark) What about the network performance for instances deployed in different regions? In order to answer this question, you need to complete the following table.
 
@@ -68,8 +71,12 @@
     | Oregon - Oregon           | 4250           |  0.234   |
 
     > Region: `N. Virginia`/`Oregon`. Use `Ubuntu Server 20.04 LTS (HVM)` as AMI. All instances are `t3.medium`.
+    > 
+    > Network performance between instances in the same regions is much better than those in different regions.
     
 3. (1 mark) Is network performance consistent over time? You can do measurements at different times of a day and compare the results. Please give at least 2 possible reasons why network performance is inconsistent.
 
-    > Your answer goes here.
+    > No.
+    > Bandwidth throughput may decrease during the peak hour when the AWS services are busier.
+    > Network latency may increase during the peak hour when the Internet overall is more "crowded", leading an increase in RTT especially for inter-region instances.
 
